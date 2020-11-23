@@ -7,6 +7,10 @@
 <script lang="ts">
 import Vue from "vue";
 
+const isElement = (target: Vue | Element | Vue[] | Element[]): target is Element => {
+  return (target as Element).classList !== undefined;
+};
+
 export default Vue.extend({
   name: "SkeletonLoader",
   computed: {
@@ -17,14 +21,16 @@ export default Vue.extend({
   mounted() {
     const target = this.$refs.skeleton;
     const options = { threshold: 0.5 };
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           this.$emit("loadNextPage");
         }
       });
     }, options);
-    observer.observe(target);
+    if (isElement(target)) {
+      observer.observe(target);
+    }
   }
 });
 </script>

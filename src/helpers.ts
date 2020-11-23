@@ -1,4 +1,4 @@
-import {Repository} from "@/types";
+import { Repository } from "@/types";
 
 export const unique = (arr: Repository[]) => {
   const dict = new Set();

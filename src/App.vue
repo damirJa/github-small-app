@@ -9,7 +9,7 @@ import Vue from "vue";
 import "normalize.css";
 
 export default Vue.extend({
-  name: "App",
+  name: "App"
 });
 </script>
 
@@ -29,4 +29,3 @@ export default Vue.extend({
   padding: 0 50px;
 }
 </style>
-

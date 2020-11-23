@@ -2,7 +2,9 @@
   <div id="listWrapper" :class="[isLoaded ? 'scrollable' : '']">
     <Hero :isLoaded="isLoaded" />
     <main class="main">
-      <Button @click="loadPrevPage" v-if="missedPages > 0">Load previous</Button>
+      <Button @click="loadPrevPage" v-if="missedPages > 0"
+        >Load previous</Button
+      >
       <RepositoriesList :repositories="repositories" />
       <SkeletonLoader v-if="isLoaded" @loadNextPage="loadNextPage" />
     </main>
@@ -106,7 +108,7 @@ export default Vue.extend({
           ...this.repositories,
           ...repos.data.items
         ]).sort((a, b) => b.stargazers_count - a.stargazers_count);
-        if(to.query.page > from.query.page) {
+        if (to.query.page > from.query.page) {
           this.toPage = nextPage;
         } else {
           this.fromPage = nextPage;
